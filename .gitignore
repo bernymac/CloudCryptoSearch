@@ -4,3 +4,7 @@
 /prototype.jar
 /build/
 /bin/
+/.settings/
+/.classpath
+/.DS_Store
+/.project
