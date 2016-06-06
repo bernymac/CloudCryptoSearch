@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="projects/core/src/main/java"/>
 	<classpathentry kind="src" path="projects/cloud/src/main/java"/>
-	<classpathentry kind="src" path="projects/testScheduler/src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/aws/commons-codec-1.3.jar"/>
 	<classpathentry kind="lib" path="lib/aws/httpclient-4.1.1.jar"/>
