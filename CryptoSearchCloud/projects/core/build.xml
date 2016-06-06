@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CryptoSearch Core" default="build" basedir=".">
+	<property name="project.dir" value="${basedir}/../.." />
+	<property name="project.lib.dir" value="${project.dir}/lib" />
+	<property name="project.build.dir" value="${project.dir}/build/packages" />
+	<property file="${project.dir}/build.properties" />
+
+	<property name="module" value="core" />
+	<property name="module.jar" value="${main.name}-${module}.jar" />
+
+	<property name="src.dir" value="${basedir}/src/main/java" />
+	<property name="conf.dir" value="${basedir}/src/main/resources/META-INF" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="build.classes.dir" value="${build.dir}/classes" />
+	<property name="build.deploy.dir" value="${build.dir}/deploy" />
+	
+	<property name="jboss.client.dir" value="${jboss.home}/client" />
+	<property name="jboss.common.dir" value="${jboss.home}/common/lib" />
+
+
+	<!-- Paths -->
+
+	<path id="compile.path">
+		<fileset dir="${project.build.dir}" includes="${main.name}-cloud.jar" />
+		<fileset dir="${project.lib.dir}" includes="**/*.jar" />
+		<fileset dir="${jboss.client.dir}" includes="*.jar" />
+<!--		<fileset dir="${jboss.common.dir}" includes="hibernate-core.jar" />	-->
+	</path>
+
+
+	<!-- Build targets -->
+
+	<target name="clean" description="Clean the module">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="setup">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes.dir}" />
+		<mkdir dir="${build.deploy.dir}" />
+	</target>
+
+	<target name="compile" depends="setup">
+		<javac srcdir="${src.dir}"
+		       destdir="${build.classes.dir}"
+		       includeantruntime="false"
+		       classpathref="compile.path"
+		       debug="on"
+		       optimize="on"
+		       deprecation="on"
+		       verbose="off"
+		       source="${java.compat.version}"
+		       target="${java.compat.version}"/>
+	</target>
+
+	<target name="build" depends="compile" description="Build the module as a standalone JAR">
+		<jar jarfile="${build.deploy.dir}/${module.jar}">
+<!--			<metainf dir="${conf.dir}" includes="persistence.xml" />	-->	
+			<fileset dir="${build.classes.dir}" />
+		</jar>
+	</target>
+</project>

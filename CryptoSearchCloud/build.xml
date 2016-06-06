@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="CryptoSearch" default="deploy" basedir=".">
+	<property file="build.properties" />
+
+	<property name="conf.dir" value="${basedir}/conf" />
+	<property name="lib.dir" value="${basedir}/lib" />
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="build.packages.dir" value="${basedir}/build/packages" />
+	<property name="package.ear" value="${main.name}.ear" />
+
+
+	<!-- Macros -->
+
+	<macrodef name="run-target" description="Runs a specific target on a specified module">
+		<attribute name="module" />
+		<attribute name="target" />
+		<sequential>
+			<echo message="Running target @{target} on module @{module}" />
+			<ant dir="projects/@{module}" antfile="build.xml" target="@{target}" inheritall="false" />
+		</sequential>
+	</macrodef>
+
+	<macrodef name="iterate" description="Runs a target on all modules specified on the fileset">
+		<attribute name="target" />
+		<sequential>
+			<subant target="@{target}">
+				<property name="build.deploy.dir" location="${build.packages.dir}" />
+				<filelist dir="projects">
+					<file name="cloud/build.xml" />
+					<file name="core/build.xml" />
+				</filelist>
+			</subant>
+		</sequential>
+	</macrodef>
+
+
+	<!-- Generic targets -->
+
+	<target name="setup">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.packages.dir}" />
+	</target>
+
+	<target name="clean" description="Clean the project">
+		<delete dir="${build.dir}" />
+		<iterate target="clean" />
+	</target>
+
+	<target name="build" depends="setup">
+		<iterate target="build" />
+
+		<ear destfile="${build.dir}/${package.ear}" appxml="${conf.dir}/application.xml">
+			<fileset dir="${build.packages.dir}" includes="*" />
+			<fileset dir="${lib.dir}">
+				<include name="lucene-core-3.5.0.jar" />
+				<include name="aws/aws-java-sdk-1.3.2.jar" />
+				<include name="aws/httpclient-4.1.1.jar" />
+				<include name="aws/httpcore-4.1.jar" />
+				<include name="aws/commons-codec-1.3.jar" />
+			</fileset>		
+		</ear>
+	</target>
+
+	<target name="deploy" depends="build" description="Build and deploy the project to the JBoss server">
+		<copy file="${build.dir}/${package.ear}"
+		      todir="${jboss.home}/server/${jboss.configuration}/deploy"
+		      overwrite="yes" />
+	</target>
+
+	<target name="undeploy" description="Undeploy the project from the JBoss server">
+		<delete file="${jboss.home}/server/${jboss.configuration}/deploy/${package.ear}" />
+	</target>
+
+	<target name="redeploy"
+	        depends="undeploy, deploy"
+	        description="Redeploy the project to the JBoss server (don't rebuild the project)" />
+
+	<target name="clean-deploy"
+	        depends="clean, deploy"
+	        description="Clean, build and deploy the project to the JBoss server" />
+
+	<target name="test-deploy" description="Deploy the test scheduler to the JBoss server">
+		<run-target module="testScheduler" target="deploy" />
+	</target>
+
+	<target name="test-undeploy" description="Undeploy the test scheduler from the JBoss server">
+		<run-target module="testScheduler" target="undeploy" />
+	</target>
+</project>

@@ -1,0 +1,9 @@
+K 10
+svn:ignore
+V 31
+.classpath
+.project
+bin
+target
+
+END

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application>
+	<display-name>PUC</display-name>
+
+	<!-- Project modules -->
+
+	<module>
+		<ejb>puc-core.jar</ejb>
+	</module>
+
+	<module>
+		<ejb>puc-resource.jar</ejb>
+	</module>
+
+<!--	<module>
+		<ejb>puc-gateway.jar</ejb>
+	</module>
+
+	<module>
+		<web>
+			<web-uri>puc-jsonrpc.war</web-uri>
+			<context-root>puc-gateway</context-root>
+		</web>
+	</module>
+-->
+	<!-- Libraries -->
+
+	<module>
+		<java>activemq-all-5.3.0.jar</java>
+	</module>
+
+	<module>
+		<java>drools-api.jar</java>
+	</module>
+
+	<module>
+		<java>fedone-client-console-0.2.jar</java>
+	</module>
+
+	<module>
+		<java>inoapi.jar</java>
+	</module>
+
+	<module>
+		<java>om-wrapper-1.0.jar</java>
+	</module>
+
+	<module>
+		<java>docx4j/docx4j-nightly-20100405.jar</java>
+	</module>
+
+	<module>
+		<java>docx4j/core-renderer-R8pre2.jar</java>
+	</module>
+
+	<module>
+		<java>jabsorb-1.3.1.jar</java>
+	</module>
+
+	<module>
+		<java>jsontools-core-1.7.jar</java>
+	</module>
+
+</application> 
