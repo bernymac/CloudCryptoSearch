@@ -15,6 +15,9 @@
  */
 
 package pt.unlfctdi.cryptosearch.cloud.storage;
+
+public class SimpleDBCloudConnectorBean { }
+
 //package pt.unlfctdi.cryptosearch.core.cloud;
 //
 //import java.io.ByteArrayInputStream;

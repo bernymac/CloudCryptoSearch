@@ -15,6 +15,9 @@
  */
 
 package pt.unlfctdi.cryptosearch.cloud.search;
+
+public class SearchBean { }
+
 //
 //import java.util.ArrayList;
 //import java.util.Arrays;

@@ -27,10 +27,10 @@ import pt.unlfctdi.cryptosearch.cloud.search.SearchRemote;
 import pt.unlfctdi.cryptosearch.cloud.storage.CloudStorageRemote;
 import pt.unlfctdi.cryptosearch.cloud.storage.SimulatedDiskStorageCloud;
 
-public class Main {
+public class CloudMain {
 	
-	private static String host = "176.111.104.31";
-//	private static String host = "127.0.0.1";
+	//localhost; should change to public address when deployed
+	private static String host = "127.0.0.1"; 
 	
 	public static void main (String[] args) throws Exception{
 		System.setProperty("java.rmi.server.hostname", host);
@@ -47,8 +47,7 @@ public class Main {
 			Naming.bind("SearchBean", search);
 			System.out.println("Cloud Search Running...");
 
-			CloudStorageRemote storage = new SimulatedDiskStorageCloud("/home/bf/CloudStorage/");
-//			CloudStorageRemote storage = new SimulatedDiskStorageCloud("/Users/bernardo/CloudStorage/");
+			CloudStorageRemote storage = new SimulatedDiskStorageCloud("/tmp/CryptoSearchCloud/");
 			Naming.bind("StorageBean", storage);
 			System.out.println("Cloud Storage Running...");
 		} catch (AlreadyBoundException e) {

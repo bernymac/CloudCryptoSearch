@@ -50,7 +50,7 @@ public class PrototypeClientApp {
 	public static void main (String[] args) throws Exception {
 		connector = new PrototypeClientConnector();
 		frame = new JFrame("Cloud Crypto Search");
-		fileChooser = new JFileChooser("/Users/bernardo/Desktop");
+		fileChooser = new JFileChooser("/");
 		fileChooser.setMultiSelectionEnabled(true);
 		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		

@@ -14,7 +14,10 @@
    limitations under the License.
  */
 
-//package pt.unlfctdi.cryptosearch.cloud.search;
+package pt.unlfctdi.cryptosearch.cloud.search;
+
+public class SPIMI_RFC { }
+
 //
 //import java.io.BufferedOutputStream;
 //import java.io.File;

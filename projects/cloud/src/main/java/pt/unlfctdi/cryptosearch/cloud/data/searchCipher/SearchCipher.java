@@ -14,8 +14,10 @@
    limitations under the License.
  */
 
-//package pt.unlfctdi.cryptosearch.cloud.data.searchCipher;
-//
+package pt.unlfctdi.cryptosearch.cloud.data.searchCipher;
+
+public class SearchCipher { }
+
 //import java.io.Serializable;
 //
 //public abstract class SearchCipher implements Serializable{

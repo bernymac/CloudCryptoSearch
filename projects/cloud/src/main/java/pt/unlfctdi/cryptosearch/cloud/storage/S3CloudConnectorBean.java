@@ -15,6 +15,9 @@
  */
 
 package pt.unlfctdi.cryptosearch.cloud.storage;
+
+public class S3CloudConnectorBean { }
+
 //package pt.unlfctdi.cryptosearch.core.cloud;
 //
 //import java.io.BufferedInputStream;

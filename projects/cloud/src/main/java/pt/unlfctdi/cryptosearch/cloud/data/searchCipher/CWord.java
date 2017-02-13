@@ -14,9 +14,10 @@
    limitations under the License.
  */
 
-//package pt.unlfctdi.cryptosearch.cloud.data.searchCipher;
-//
-//
+package pt.unlfctdi.cryptosearch.cloud.data.searchCipher;
+
+public class CWord { }
+
 //public class CWord extends SearchCipher {
 //
 //	private static final long serialVersionUID = -2958437923556090201L;

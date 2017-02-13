@@ -59,9 +59,10 @@ public class PrototypeClientConnector {
 	private SearchRemote search;
 	private Analyzer analyzer;
 	
+	//localhost; should change to public address of cloud server when deployed
+	private static String host = "127.0.0.1";
 	private static Logger log = Logger.getLogger(PrototypeClientConnector.class);
-	private static String host = "176.111.104.31";
-//	private static String host = "127.0.0.1";
+	
 
 	public PrototypeClientConnector() throws RemoteException, MalformedURLException, NotBoundException{
 		search = (SearchRemote)Naming.lookup("//"+host+"/SearchBean");
